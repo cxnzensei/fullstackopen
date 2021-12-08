@@ -1,0 +1,12 @@
+title 0.5_singlePageApp
+
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: document containing HTML along with main.css and spa.js
+
+note over browser:
+1. Browser executes javaScript and requests data.json
+2. There's only one page, dynamic re-renders occur through DOM-API
+3. DOM renders the data.json response to the page
+end note
+

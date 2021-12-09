@@ -1,0 +1,33 @@
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "blogs": [],
+    "username": "root",
+    "name": "Superuser",
+    "password": "salainen"
+}
+
+###
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvYmVydCIsImlkIjoiNjFiMjRmNWE3NmFmMmZmMWRjNjRkMmY2IiwiaWF0IjoxNjM5MDc2MDQ2LCJleHAiOjE2MzkwNzk2NDZ9.Rvvi0fWLoPs7UhbmVVjWw_0gB723Nq0Czn5NYhA_eJo
+
+{
+    "title": "React Patterns",
+    "author": "Robert",
+    "url": "react.com"
+}
+
+###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username": "robert",
+    "password": "password"
+}
+
+###
+DELETE http://localhost:3001/api/blogs/61b22b9430aafcc5fafedc28
+Authorization: bearer <token>

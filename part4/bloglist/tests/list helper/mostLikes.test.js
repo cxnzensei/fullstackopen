@@ -1,4 +1,4 @@
-const mostLikes = require('../utils/list_helper').mostLikes
+const mostLikes = require('../../utils/list_helper').mostLikes
 const blogs = require('./testData').blogs
 
 test('Author with most likes', () => {

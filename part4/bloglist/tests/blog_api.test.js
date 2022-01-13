@@ -68,7 +68,7 @@ test('a valid blog can be added', async () => {
   )
 })
 
-test('if likes property is missing, default it to 0', async() => {
+test('if likes property is missing, default it to empty array', async() => {
   const user = {
     username: 'robert',
     password: 'password'
@@ -89,8 +89,8 @@ test('if likes property is missing, default it to 0', async() => {
     .set('Authorization', `Bearer ${userLogin.body.token}`)
     .expect('Content-Type', /application\/json/)
 
-  expect(response.body.likes).toBeDefined()
-  expect(response.body.likes).toBe(0)
+  expect(response.body.likedBy).toBeDefined()
+  expect(response.body.likedBy).toEqual([])
 })
 
 test('Bad request if title and url are missing', async() => {

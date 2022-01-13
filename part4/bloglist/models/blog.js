@@ -7,20 +7,20 @@ const blogSchema = new mongoose.Schema({
   },
   author: {
     type: String,
-    required: true
+    required: true,
   },
   url: {
     type: String,
-    required: true
+    required: true,
   },
-  likes: {
-    type: Number,
-    default: 0
+  likedBy: {
+    type: Array,
+    default: [],
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }
+    ref: 'User',
+  },
 })
 
 blogSchema.set('toJSON', {
@@ -28,7 +28,7 @@ blogSchema.set('toJSON', {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
     delete returnedObject.__v
-  }
+  },
 })
 
 module.exports = mongoose.model('Blog', blogSchema)

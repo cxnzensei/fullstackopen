@@ -1,25 +1,34 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { upVote } from '../reducers/anecdoteReducer'
+import { voteNotif, removeNotif } from '../reducers/notificationReducer'
 
 function AnecdoteList() {
-  const anecdotes = useSelector((state) => state)
+  const anecdotes = useSelector((state) => state.anecdotes)
+  const filter = useSelector((state) => state.filter)
   const dispatch = useDispatch()
 
-  let sortedAnecdotes = anecdotes.sort((a, b) => (a.votes > b.votes ? -1 : 1))
+  let operArray = anecdotes
+    .sort((a, b) => (a.votes > b.votes ? -1 : 1))
+    .filter((anec) => anec.content.toLowerCase().includes(filter.toLowerCase()))
 
-  const vote = (id) => {
+  const vote = (id, title) => {
     dispatch(upVote(id))
+    dispatch(voteNotif(title))
+    setTimeout(() => {
+      dispatch(removeNotif())
+    }, 5000)
   }
 
   return (
     <div>
-      <h2>Anecdotes</h2>
-      {sortedAnecdotes.map((anecdote) => (
+      {operArray.map((anecdote) => (
         <div key={anecdote.id}>
           <div>{anecdote.content}</div>
           <div>
             has {anecdote.votes}
-            <button onClick={() => vote(anecdote.id)}>vote</button>
+            <button onClick={() => vote(anecdote.id, anecdote.content)}>
+              vote
+            </button>
           </div>
         </div>
       ))}

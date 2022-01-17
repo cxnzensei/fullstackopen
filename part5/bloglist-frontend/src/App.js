@@ -147,9 +147,8 @@ function App() {
     } else {
       updatedBlog.likedBy.push(user.id)
     }
-    blogService.update(ID, updatedBlog).then((returnedData) => {
-      setBlogs(blogs.map((blog) => (blog.id !== ID ? blog : returnedData)))
-    })
+    setBlogs(blogs.map((blog) => (blog.id !== ID ? blog : updatedBlog)))
+    blogService.update(ID, updatedBlog)
   }
 
   const deleteBlog = async (ID) => {
@@ -158,7 +157,6 @@ function App() {
     if(conf) {
       try {
         setBlogs(blogs.filter((blog) => blog.id !== ID))
-        await blogService.remove(ID)
         setNotification({
           message: `The blog ${blog.title} by ${blog.author} was removed`,
           color: 'red',
@@ -169,6 +167,7 @@ function App() {
             color: '',
           })
         }, 4000)
+        await blogService.remove(ID)
       } catch (err) {
         setNotification({
           message: 'The blog was not removed',
@@ -186,8 +185,8 @@ function App() {
 
   const logOut = async (event) => {
     event.preventDefault()
-    window.localStorage.clear()
     setUser(null)
+    window.localStorage.clear()
   }
 
   return (
@@ -253,7 +252,7 @@ function App() {
               </div>
             </div>
             <Togglable firstButton='Create a new blog' lastButton='Cancel'>
-              <div className='border rounded-md p-4 my-3 max-w-[50%]'>
+              <div className='border rounded-md p-4 my-3 md:max-w-lg'>
                 <BlogForm
                   addBlog={addBlog}
                   title={title}

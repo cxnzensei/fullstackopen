@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3003/api/users'
+const baseUrl = 'https://bloglistbackend.herokuapp.com/api/users'
 
 const signUp = async (credentials) => {
   const response = await axios.post(baseUrl, credentials)

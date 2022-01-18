@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
-It uses Redux for state management.\
+It uses Redux for state management.
 
 ## To set up this exercise, do the following :
 

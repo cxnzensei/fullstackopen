@@ -2,18 +2,8 @@ const blank = ''
 
 export const notificationReducer = (state = blank, action) => {
   switch (action.type) {
-    case 'VOTE_NOTIF':
-      return (
-        <span>
-          you voted <strong>'{action.data}'</strong>
-        </span>
-      )
     case 'ADD_NOTIF':
-      return (
-        <span>
-          you added <strong>'{action.data}'</strong>
-        </span>
-      )
+      return action.data
     case 'REMOVE_NOTIF':
       return action.data
     default:
@@ -21,23 +11,18 @@ export const notificationReducer = (state = blank, action) => {
   }
 }
 
-export const voteNotif = (title) => {
-  return {
-    type: 'VOTE_NOTIF',
-    data: title,
-  }
-}
+export const addNotif = (title, time) => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'ADD_NOTIF',
+      data: title,
+    })
 
-export const addNotif = (title) => {
-  return {
-    type: 'ADD_NOTIF',
-    data: title,
-  }
-}
-
-export const removeNotif = () => {
-  return {
-    type: 'REMOVE_NOTIF',
-    data: blank,
+    setTimeout(() => {
+      dispatch({
+        type: 'REMOVE_NOTIF',
+        data: blank,
+      })
+    }, time * 1000)
   }
 }

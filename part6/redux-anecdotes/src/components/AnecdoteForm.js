@@ -1,7 +1,6 @@
 import { createAnec } from '../reducers/anecdoteReducer'
 import { useDispatch } from 'react-redux'
-import { addNotif, removeNotif } from '../reducers/notificationReducer'
-import anecServices from '../services/anecdotes'
+import { addNotif } from '../reducers/notificationReducer'
 
 function AnecdoteForm() {
   const dispatch = useDispatch()
@@ -10,12 +9,8 @@ function AnecdoteForm() {
     e.preventDefault()
     const content = e.target.anecdote.value
     e.target.anecdote.value = ''
-    const newAnec = await anecServices.createNew(content)
-    dispatch(createAnec(newAnec))
-    dispatch(addNotif(content))
-    setTimeout(() => {
-      dispatch(removeNotif())
-    }, 5000)
+    dispatch(createAnec(content))
+    dispatch(addNotif(`you added : ${content}`, 5))
   }
   return (
     <div>

@@ -1,6 +1,6 @@
-const blank = ''
+let blank = 0
 
-export const notificationReducer = (state = blank, action) => {
+export const notificationReducer = (state = null, action) => {
   switch (action.type) {
     case 'ADD_NOTIF':
       return action.data
@@ -13,16 +13,17 @@ export const notificationReducer = (state = blank, action) => {
 
 export const addNotif = (title, time) => {
   return async (dispatch) => {
+    clearTimeout(blank)
+    blank = setTimeout(() => {
+      dispatch({
+        type: 'REMOVE_NOTIF',
+        data: null,
+      })
+    }, time * 1000)
+
     dispatch({
       type: 'ADD_NOTIF',
       data: title,
     })
-
-    setTimeout(() => {
-      dispatch({
-        type: 'REMOVE_NOTIF',
-        data: blank,
-      })
-    }, time * 1000)
   }
 }

@@ -83,7 +83,7 @@ const App = () => {
           <AnecdoteList anecdotes={anecdotes} vote={vote} />
         </Route>
         <Route path='/create'>
-          <CreateNew addNew={addNew} />
+          <CreateNew addNew={addNew} setNotification={setNotification} />
         </Route>
         <Route path='/'>
           <About />

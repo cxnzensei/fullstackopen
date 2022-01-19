@@ -1,52 +1,57 @@
-import { useState } from 'react'
+import { useField } from '../hooks'
 
 export const CreateNew = (props) => {
-  const [content, setContent] = useState('')
-  const [author, setAuthor] = useState('')
-  const [info, setInfo] = useState('')
+  const content = useField('text')
+  const author = useField('text')
+  const info = useField('text')
+
+  const reset = () => {
+    content.setValue('')
+    author.setValue('')
+    info.setValue('')
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.addNew({
-      content,
-      author,
-      info,
-      votes: 0,
-    })
-    setContent('')
-    setAuthor('')
-    setInfo('')
+    if (content.value && author.value && info.value) {
+      props.addNew({
+        content: content.value,
+        author: author.value,
+        info: info.value,
+        votes: 0,
+      })
+      reset()
+    } else {
+      props.setNotification('One or more fields missing')
+      setTimeout(() => {
+        props.setNotification('')
+      }, 5000)
+    }
+  }
+
+  const handleReset = (e) => {
+    e.preventDefault()
+    reset()
   }
 
   return (
     <div>
       <h2>create a new anecdote</h2>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div>
           content
-          <input
-            name='content'
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
+          <input {...content} />
         </div>
         <div>
           author
-          <input
-            name='author'
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-          />
+          <input {...author} />
         </div>
         <div>
           url for more info
-          <input
-            name='info'
-            value={info}
-            onChange={(e) => setInfo(e.target.value)}
-          />
+          <input {...info} />
         </div>
-        <button>create</button>
+        <button onClick={handleSubmit}>create</button>
+        <button onClick={handleReset}>reset</button>
       </form>
     </div>
   )

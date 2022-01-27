@@ -1,1 +1,1 @@
-# Bloglist frontend
+# Testing React apps

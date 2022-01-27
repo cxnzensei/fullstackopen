@@ -1,0 +1,37 @@
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "blogs": [],
+    "username": "Strange",
+    "name": "Stephen Strange",
+    "password": "timeStone"
+}
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN0cmFuZ2UiLCJpZCI6IjYxYjI2MDM3MTA3ZTYxZTQwNmJjZDJiYSIsImlhdCI6MTYzOTA4MDAxNywiZXhwIjoxNjM5MDgzNjE3fQ.v9FSd4oZRYl0nrLEfeG4CO5hpxOhgCCiAQGlnsrXDQk
+
+{
+    "title": "How to defeat a dragon",
+    "author": "Aegon",
+    "url": "woop.io"
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "name": "goofyDuck",
+    "username": "cluck",
+    "password": "qwerty"
+}
+
+###
+DELETE http://localhost:3003/api/blogs/61b27ba375e01bda7a24dbe3
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYxYjI1ZjcwMTA3ZTYxZTQwNmJjZDJhZCIsImlhdCI6MTYzOTA4Njg2NywiZXhwIjoxNjM5MDkwNDY3fQ.TuacYT6L7DWsEfsEA2uWjHSien_QLceszD1qTOptzQE
+
+###
+GET http://localhost:3003/api/users

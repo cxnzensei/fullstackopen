@@ -38,12 +38,12 @@ function App() {
         <div className='p-3 flex flex-col'>
           <Router>
             <Switch>
-              <Route exact path='/users/:id' component={user} />
-              <Route exact path='/users' component={users} />
-              <Route exact path='/blogs/:id' component={blog} />
-              <Route exact path='/login' component={login} />
-              <Route exact path='/signUp' component={signup} />
-              <Route exact path='/' component={dashboard} />
+              <Route path='/users/:id' component={user} />
+              <Route path='/users' component={users} />
+              <Route path='/blogs/:id' component={blog} />
+              <Route path='/login' component={login} />
+              <Route path='/signUp' component={signup} />
+              <Route path='/' component={dashboard} />
             </Switch>
           </Router>
         </div>

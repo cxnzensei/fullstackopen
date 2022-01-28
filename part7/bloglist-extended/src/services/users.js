@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'https://blogs-nishit.vercel.app/api/users'
+const baseUrl = 'https://blogs-iota.vercel.app/api/users'
 
 const signUp = async (credentials) => {
   const response = await axios.post(baseUrl, credentials)

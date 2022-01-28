@@ -7,10 +7,10 @@ import { addNotif } from '../reducers/notificationReducer'
 
 const Blog = () => {
   const [comment, setComment] = useState('')
-  const blogs = useSelector(state => state.blogs)
+  const blogs = useSelector((state) => state.blogs)
   const dispatch = useDispatch()
   const auth = useSelector((state) => state.auth)
-  const users = useSelector(state => state.users)
+  const users = useSelector((state) => state.users)
   const findUser = (userId) => {
     let user = users.find(user => user.id === userId)
     return user?.username
@@ -54,10 +54,10 @@ const Blog = () => {
             <div className='border shadow-md rounded-md'>
               <div className='p-3 border-b-2'>
                 <div className='space-y-1'>
-                  <div className='text-xl break-all md:text-2xl'>{blog?.title}</div>
-                  <div className='text-sm break-all'>Authored by {blog?.author}</div>
+                  <div className='text-xl break-words md:text-2xl'>{blog?.title}</div>
+                  <div className='text-sm break-words'>Authored by {blog?.author}</div>
                   <div className='text-xs md:text-sm'>Posted by{' '}
-                    <Link className='underline underline-offset-2' to={`/users/${blog?.user}`}>{findUser(blog?.user)}</Link>
+                    <Link className='underline break-words underline-offset-2' to={`/users/${blog?.user}`}>{findUser(blog?.user)}</Link>
                   </div>
                   <div className='text-xs'>
                     on{' '}
@@ -96,22 +96,22 @@ const Blog = () => {
               </div>
               <div className='border-b-2 p-3'>
               &#8635;{' '}
-                <span className='hover:underline break-all hover:text-gray-900 text-gray-500 cursor-pointer'>
+                <span className='hover:underline hover:text-gray-900 break-all text-gray-500 cursor-pointer'>
                   <a href={`${blog?.url}`} target='_blank' rel="noreferrer">
                     {blog?.url.length > 30 ? blog?.url.substring(0, 30)+'...' : blog?.url}
                   </a>
                 </span>
               </div>
-              <div className='break-all items-center p-3'>
+              <div className='items-center p-3'>
                 <div className='text-xs md:text-sm'>
                   {blog.likedBy.length === 0 ? 'Be the first person to like this' : 'Liked by'}
                 </div>
-                <div className='flex break-all my-1 space-x-[3px]'>
+                <div className='break-words'>
                   {blog?.likedBy.map(user => (
                     <Link key={user} to={`/users/${user}`}>
-                      <div className='flex underline underline-offset-2 text-xs md:text-sm'>
+                      <span className='underline mx-[2px] underline-offset-2 text-xs md:text-sm'>
                         {findUser(user)}
-                      </div>
+                      </span>
                     </Link>
                   ))}
                 </div>
@@ -127,14 +127,14 @@ const Blog = () => {
             </div>
             <div>
               <div className='text-2xl'>{blog.comments.length === 0 ? 'No comments yet' : 'Comments'}</div>
-              <div className={`my-2 break-words rounded-md px-3 py-2 ${blog.comments.length !== 0 && 'bg-gray-400'} max-h-[14.5rem] overflow-y-scroll scrollbar_hide`}>
+              <div className={`my-2 rounded-md px-3 py-2 ${blog.comments.length !== 0 && 'bg-gray-400'} max-h-[14.5rem] overflow-y-scroll scrollbar_hide`}>
                 {blog.comments.sort((a,b) => a.date > b.date ? -1 : 1).map(el => (
                   <div key={el.coId} className='my-2 border p-3 rounded bg-zinc-100'>
                     <div className='space-x-2'>
-                      <Link to={`/users/${el.user}`} className='font-bold text-base max-w-max text-gray-600'>
+                      <Link to={`/users/${el.user}`} className='font-bold text-base break-words max-w-max text-gray-600'>
                         {findUser(el.user)}
                       </Link>
-                      <span>
+                      <span className='break-words'>
                         {el.comment}
                       </span>
                     </div>

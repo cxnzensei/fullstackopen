@@ -26,7 +26,7 @@ const Header = () => {
               <button className='px-4 py-3 font-bold hover:bg-gray-200 focus:bg-gray-400 rounded-lg' onClick={() => {
                 dispatch(logout())
                 history.push('/login')
-              }}>logout</button>
+              }}>Logout</button>
             </div>
           )}
         </div>

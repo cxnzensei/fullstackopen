@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'https://blogs-nishit.vercel.app/api/blogs'
+const baseUrl = 'https://blogs-iota.vercel.app/api/blogs'
 
 let token = null
 let config

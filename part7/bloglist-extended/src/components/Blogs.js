@@ -15,7 +15,7 @@ function Blogs() {
   )
 
   return (
-    <>
+    <div>
       {blogs && (
         <div className='grid my-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4'>
           {sortedBlogs.length === 0 ? (
@@ -26,18 +26,18 @@ function Blogs() {
                 <div
                   className='text-xl border rounded-md px-2 my-2 max-w-full py-2 pb-3 hover:scale-95 duration-300 ease-in-out'
                 >
-                  <div className='font-bold text-sm max-w-fit bg-blue-400 p-2 my-2 rounded-br-2xl'>
+                  <div className='font-bold text-xs md:text-sm max-w-fit bg-blue-400 py-2 px-4 my-2 rounded-br-2xl'>
                     {findUser(blog.user)}
                   </div>
-                  <div className='font-semibold break-all max-w-[30ch] text-gray-600'>{blog.title}</div>
-                  <div className='font-medium break-all text-base'>by {blog.author}</div>
+                  <div className='font-semibold break-word text-gray-600'>{blog.title}</div>
+                  <div className='font-medium break-word text-base'>by {blog.author}</div>
                 </div>
               </Link>
             ))
           )}
         </div>
       )}
-    </>
+    </div>
   )
 }
 

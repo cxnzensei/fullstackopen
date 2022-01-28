@@ -12,7 +12,7 @@ function Notification() {
         <div className='break-all'>{notification}</div>
       ) : (
         (auth ? (
-          <div>
+          <div className='break-all'>
           logged in as {''}
             <Link to={`/users/${auth.id}`} className='font-bold hover:underline underline-offset-2 text-blue-700'>
               {auth?.name}

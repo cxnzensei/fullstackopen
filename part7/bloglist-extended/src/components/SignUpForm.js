@@ -1,6 +1,5 @@
 import { signUp } from '../reducers/userReducer'
 import { useDispatch } from 'react-redux'
-import { addNotif } from '../reducers/notificationReducer'
 import { useSelector } from 'react-redux'
 import { useField } from '../hooks'
 import { Link } from 'react-router-dom'
@@ -21,6 +20,12 @@ function SignUpForm() {
 
   const isInvalid = (!fullName || !pass || !userName)
 
+  const notif = (message, color) => {
+    const mess = document.getElementById('notif')
+    mess.innerText = message
+    mess.style.color = color
+  }
+
   const handleSignUp = (e) => {
     const name = fullName.value
     const password = pass.value
@@ -30,18 +35,19 @@ function SignUpForm() {
     if(name.length >= 2 && password.length >= 5 && username.length >= 2) {
       if(!(users.find((user) => user.username === username))) {
         dispatch(signUp({ name, password, username }))
+        notif('Your account has been created, login to continue', 'green')
       }
       else {
-        dispatch(addNotif('Username is already taken, try another username', '5', 'red'))
+        notif('The username is already taken, try again', 'red')
       }
     }
     else {
-      dispatch(addNotif('Min lengths - fullname(2), username(2) and password(5)', 5, 'red'))
+      notif('Minimum lengths - fullname(2), username(2) and password(5)', 'red')
     }
     reset()
   }
   return (
-    <div className="container flex mx-auto max-w-screen-md -mt-[150px] lg:items-center justify-center sm:h-screen">
+    <div className="container flex mx-auto max-w-screen-md md:-mt-10 lg:items-center justify-center sm:h-screen">
       <div className="flex lg:w-3/5">
         <img
           className="max-w-full hidden lg:inline-block"
@@ -50,14 +56,15 @@ function SignUpForm() {
         />
       </div>
       <div className="flex flex-col md:w-2/5 sm: w-72 sm: mt-40 lg: mb-40">
-        <div className="flex flex-col items-center bg-white p-4 border border-gray-primary rounded mb-4">
-          <h1 className="flex justify-center w-full mb-3">
+        <div className="flex flex-col items-center p-4 border border-gray-primary rounded mb-4">
+          <div className="flex flex-col items-center justify-center w-full mb-3">
             <img
               src="/images/1.png"
               alt="logo"
               className="mt-2 w-6/12"
             />
-          </h1>
+            <div className='text-xs' id='notif'></div>
+          </div>
 
           <form onSubmit={handleSignUp}>
             <input

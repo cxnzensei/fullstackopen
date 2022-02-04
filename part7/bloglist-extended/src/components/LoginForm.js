@@ -26,7 +26,7 @@ function LoginForm() {
   const isInvalid = (!username.value || !password.value)
 
   return (
-    <div className="container flex mx-auto max-w-screen-md -mt-[150px] lg:items-center justify-center sm:h-screen">
+    <div className="container flex mx-auto max-w-screen-md md:-mt-10 lg:items-center justify-center sm:h-screen">
       <div className="flex lg:w-3/5">
         <img
           className="max-w-full hidden lg:inline-block"

@@ -1,17 +1,17 @@
 # fullstackopen
 
-## [Fundamentals of Web apps](https://github.com/cxnzensei/fullstackopen/tree/main/part0)
+## 0) [Fundamentals of Web apps](https://github.com/cxnzensei/fullstackopen/tree/main/part0)
 
-## [Introduction to React](https://github.com/cxnzensei/fullstackopen/tree/main/part1) 
+## 1) [Introduction to React](https://github.com/cxnzensei/fullstackopen/tree/main/part1) 
 
-## [Communicating with server](https://github.com/cxnzensei/fullstackopen/tree/main/part2)
+## 2) [Communicating with server](https://github.com/cxnzensei/fullstackopen/tree/main/part2)
 
-## [Programming a server with NodeJS and Express](https://github.com/cxnzensei/fullstackopen/tree/main/part3)
+## 3) [Programming a server with NodeJS and Express](https://github.com/cxnzensei/fullstackopen/tree/main/part3)
 
-## [Testing Express servers, user administration](https://github.com/cxnzensei/fullstackopen/tree/main/part4)
+## 4) [Testing Express servers, user administration](https://github.com/cxnzensei/fullstackopen/tree/main/part4)
 
-## [Testing React apps](https://github.com/cxnzensei/fullstackopen/tree/main/part5)
+## 5) [Testing React apps](https://github.com/cxnzensei/fullstackopen/tree/main/part5)
 
-## [State management with Redux](https://github.com/cxnzensei/fullstackopen/tree/main/part6)
+## 6) [State management with Redux](https://github.com/cxnzensei/fullstackopen/tree/main/part6)
 
-## [React router, custom hooks, styling app with CSS and webpack](https://github.com/cxnzensei/fullstackopen/tree/main/part7)
+## 7) [React router, custom hooks, styling app with CSS and webpack](https://github.com/cxnzensei/fullstackopen/tree/main/part7)
